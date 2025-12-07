@@ -5,9 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Icon from "@/components/ui/icon";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const { theme, toggleTheme } = useTheme();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -61,7 +63,7 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-heading font-bold text-foreground">Portfolio</h1>
-            <div className="hidden md:flex gap-8">
+            <div className="hidden md:flex gap-8 items-center">
               {[
                 { id: "home", label: "Главная" },
                 { id: "about", label: "Обо мне" },
@@ -78,6 +80,18 @@ const Index = () => {
                   {item.label}
                 </button>
               ))}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="ml-4"
+              >
+                {theme === "light" ? (
+                  <Icon name="Moon" size={20} />
+                ) : (
+                  <Icon name="Sun" size={20} />
+                )}
+              </Button>
             </div>
           </div>
         </div>
