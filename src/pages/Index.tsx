@@ -63,23 +63,25 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-heading font-bold text-foreground">Portfolio</h1>
-            <div className="hidden md:flex gap-8 items-center">
-              {[
-                { id: "home", label: "Главная" },
-                { id: "about", label: "Обо мне" },
-                { id: "works", label: "Работы" },
-                { id: "contact", label: "Контакты" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    activeSection === item.id ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+            <div className="flex gap-8 items-center">
+              <div className="hidden md:flex gap-8">
+                {[
+                  { id: "home", label: "Главная" },
+                  { id: "about", label: "Обо мне" },
+                  { id: "works", label: "Работы" },
+                  { id: "contact", label: "Контакты" },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`text-sm font-medium transition-colors hover:text-primary ${
+                      activeSection === item.id ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
               <Button
                 variant="ghost"
                 size="icon"
